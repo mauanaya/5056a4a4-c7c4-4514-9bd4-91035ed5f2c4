@@ -1,5 +1,4 @@
 import fire
-
 from util import Amortization
 
 
@@ -11,13 +10,24 @@ class Main(object):
 
     @staticmethod
     def annuity(amount, interest, n):
-        pass
+        amortization = Amortization(amount, interest, n)
+        return amortization.annuity
+        
 
     def table(self, amount, interest, n, rows=10, save=""):
-        pass
+        amortization = Amortization(amount, interest, n)
+        df = amortization.get_table()
+        print(df)
+        if save:
+            df.to_csv(save)
+        
 
     def graph(self, amount, interest, n, save=""):
-        pass
+        amortization = Amortization(amount, interest,n)
+        fig = amortization.get_plot()
+        if save:
+            fig.savefig(save)
+        
 
 
 if __name__ == "__main__":
